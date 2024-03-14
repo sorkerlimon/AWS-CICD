@@ -1,0 +1,52 @@
+<!-- meet_link_email_template.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Invitation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interview Invitation</h1>
+        <p>Dear {{ applicant_name }},</p>
+        <p>Congratulations! We are pleased to invite you for an interview for the {{ applicant_position }} position at Intelligent Image Management Limited.</p>
+        <p><strong>Interview Details:</strong></p>
+        <ul>
+
+            <li><strong>Join:</strong><a href="{{ meet_link }}" >Join</a> </li>
+        </ul>
+        <p>Please come prepared and bring a copy of your resume. We look forward to discussing your qualifications and learning more about your experiences.</p>
+        <p>Should you have any questions or need to reschedule, please contact us at <strong>iimi.job2023@gmail.com</strong>.</p>
+        <p>Best regards,<br>Intelligent Image Management Limited.</p>
+        <a href="{{ meet_link }}" >Join</a>
+    </div>
+</body>
+</html>

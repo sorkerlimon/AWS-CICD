@@ -1,0 +1,95 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+{% include "sitebar.html" %}
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+
+	<!-- Chat Main Row -->
+	<div class="chat-main-row">
+	
+		<!-- Chat Main Wrapper -->
+		<div class="chat-main-wrapper">
+		
+			<!-- Chats View -->
+			<div class="col-lg-9 message-view task-view">
+				<div class="chat-window">
+					<div class="chat-contents">
+						<div class="chat-content-wrap">
+							<div class="chat-wrap-inner">
+								<div class="chat-box">
+									<div class="chats">
+
+										{% if chat_history %}
+											{% for chat_message in chat_history %}
+											<div class="chat chat-right">
+												<div class="chat-body">
+												  <div class="chat-bubble">
+													<div class="chat-content">
+													  <p>{{ chat_message.user }}</p>
+													  <span class="chat-time">{{ chat_message.time }}</span>
+													</div>
+												  </div>
+												</div>
+											  </div>
+											  <div class="chat chat-left">
+												<div class="chat-avatar">
+												  <a href="profile.html" class="avatar">
+													<img alt="" src="{% static "images/iimi_bot.png" %}">
+												  </a>
+												</div>
+												<div class="chat-body">
+												  <div class="chat-bubble">
+													<div class="chat-content">
+													  <p>{{ chat_message.bot }}</p>
+													  <span class="chat-time">{{ chat_message.time }}</span>
+													</div>
+												  </div>
+												</div>
+											  </div>
+											{% endfor %}
+										{% endif %}
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="chat-footer">
+						<div class="message-bar">
+							<div class="message-inner">
+								<a class="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img src="{% static "assets/img/attachment.png" %} " alt=""></a>
+								<div class="message-area">
+									<form id="chat-form" method="post" action="{% url 'chat' %}">
+										{% csrf_token %}
+										<div class="input-group">
+											<textarea class="form-control" name="user_input" id="user_input" placeholder="Type message..."></textarea>
+											<span class="input-group-append">
+												<button class="btn btn-custom" type="submit"><i class="fa fa-send"></i></button>
+											</span>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- /Chats View -->
+			
+
+			
+		</div>
+		<!-- /Chat Main Wrapper -->
+		
+	</div>
+	<!-- /Chat Main Row -->
+	
+
+	
+</div>
+<!-- /Page Wrapper -->
+
+{% endblock content %}

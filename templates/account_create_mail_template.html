@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations!</title>
+    <!-- Add Bootstrap CDN link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="mb-4">Congratulations on Joining Us!</h2>
+    <p>We are thrilled to welcome you to the Intelligent Image Management Limited family! Your unique skills and passion stood out, and we can't wait to see the positive impact you'll make.</p>
+
+    <p class="mt-4"><strong>Login Details:</strong><br>
+        <strong>Portal:</strong> https://ham.capturedata.com<br>
+        <strong>Username:</strong> {{ useraccount }}<br>
+        <strong>Password:</strong> {{ password }}</p>
+
+    <p class="mt-4">Feel free to explore our portal, and remember, your journey with us is just beginning. If you have any questions, our HR department is here to help at 01635200923.</p>
+
+    <p class="mt-4">Once again, congratulations! We're excited to have you on board.</p>
+
+    <p class="mt-4">Best regards,<br>
+        HR<br>
+        Intelligent Image Management Limited<br>
+        iimi.job2023@gmail.com
+    </p>
+</div>
+
+<!-- Add Bootstrap JS and Popper.js CDN links -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

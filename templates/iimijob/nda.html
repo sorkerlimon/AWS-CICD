@@ -1,0 +1,174 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+  {% include "sitebar.html" %}
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+    
+    <!-- Page Content -->
+    <div class="content container-fluid">
+    
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title">Employee</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url "home_page" %}">Dashboard</a></li>
+              <li class="breadcrumb-item active">NDA Image</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Header -->
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <div id="messages-container" style="text-align: center; margin: auto; font-weight: bold;">
+        {% if messages %}
+          <div id="messages" class="alert alert-success">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+          </div>
+          <script>
+            // Automatically close the message after 5 seconds
+            $(document).ready(function () {
+              setTimeout(function () {
+                $("#messages").fadeOut("slow");
+              }, 5000);
+            });
+          </script>
+        {% endif %}
+      </div>
+      
+      {% if nda1 and nda2 %}
+        <!-- Gallery Section -->
+        <h4>1. Download both images.</h4>
+        <h4>2. After completing the signature, upload both files.</h4>
+        
+		<br>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="{{ nda1.url }}" alt="Image 1">
+            <a href="{{ nda1.url }}" download="{{ nda1.url }}" class="download-button">Download</a>
+          </div>
+          <div class="gallery-item">
+            <img src="{{ nda2.url }}" alt="Image 2">
+            <a href="{{ nda2.url }}" download="{{ nda2.url }}" class="download-button">Download</a>
+          </div>
+        </div>
+        <!-- /Gallery Section -->
+       <!-- Single Form for Image Uploads and Submit -->
+
+       <form method="post" enctype="multipart/form-data" id="uploadForm">
+        {% csrf_token %}
+    
+        <div class="image-upload-section">
+          <h4>1. Upload your NDA1</h4>
+          <input type="file" name="image1" id="image1" accept="image/*" required >
+        </div>
+    
+        <div class="image-upload-section">
+          <h4>2. Upload your NDA2</h4>
+          <input type="file" name="image2" id="image2" accept="image/*" required>
+        </div>
+    
+        <!-- Submit Button -->
+        <div class="submit-button">
+          <button type="submit" id="uploadButton">Upload</button>
+        </div>
+      </form>
+      <!-- /Single Form for Image Uploads and Submit -->
+
+      {% else %}
+        <h1>No NDA Available</h1> 
+      {% endif %} 
+
+
+  
+
+    </div>
+    <!-- /Page Content -->
+  </div>
+  <!-- /Page Wrapper -->
+
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      border: 2px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .download-button {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: #3498db;
+      color: #fff;
+      padding: 5px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .image-upload-section {
+      margin-top: 20px;
+    }
+
+    .image-upload-section h4 {
+      margin-bottom: 10px;
+    }
+
+    .image-upload-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .image-upload-section input {
+      flex: 1;
+    }
+
+    .image-upload-section button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .submit-button {
+      margin-top: 20px;
+    }
+
+    .submit-button form {
+      display: flex;
+      
+    }
+
+    .submit-button button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+{% endblock content %}

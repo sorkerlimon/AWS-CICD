@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - sudo yum update -y 
+      - sudo yum install nginx -y
+
+  build:
+    commands:
+      - echo "Building the project..."
+      - grep -Fq "Welcome" index.html
+
+  post_build:
+    commands:
+      - echo "Running post-build commands..."
+
+# artifacts:
+#   files:
+#     - /var/www/html/index.html
+#   name: my-project-artifact

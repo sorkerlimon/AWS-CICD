@@ -1,0 +1,30 @@
+
+Parameters:
+  VPCId: 
+    Description: The security group description
+    Type: AWS::EC2::VPC::Id
+
+Resources:
+  SSHSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: Test Drift security group
+      SecurityGroupIngress:
+        - CidrIp: "10.0.0.0/25"
+          FromPort: 22
+          IpProtocol: tcp
+          ToPort: 22
+      VpcId: !Ref VPCId
+
+  HTTPSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: Test Drift HTTP security Group
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: "0.0.0.0/0"
+          IpProtocol: tcp
+      VpcId: !Ref VPCId
+
